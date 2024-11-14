@@ -1,0 +1,12 @@
+[
+    {
+        "id": 1,
+        "name": "Vegan",
+        "tool_tip": "A diet that excludes all animal products."
+    },
+    {
+        "id": 2,
+        "name": "Keto",
+        "tool_tip": "A low-carb, high-fat diet."
+    }
+]
