@@ -26,7 +26,8 @@ class HealthConcernsViewModel: OnboardingViewModel {
     
     func loadOptions() {
         do {
-            let response = try JSONLoader.decode(GenericResponse<HealthConcern>.self, from: "Healthconcern")
+            let jsonLoader = JSONLoader()
+            let response = try jsonLoader.decode(GenericResponse<HealthConcern>.self, from: "Healthconcern")
             options = response.data
             displayedConcerns = selectedConcerns
         } catch {

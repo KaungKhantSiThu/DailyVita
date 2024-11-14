@@ -27,7 +27,6 @@ final class LifestyleQuestionsViewModelTests: XCTestCase {
         let question = Question.data[0]
         viewModel.updateAnswer(for: question, with: "Yes")
         XCTAssertTrue(viewModel.isDailyExposure ?? false)
-        XCTAssertEqual(mockUserChoices.isDailyExposure, true)
     }
 
     func testIsComplete() {

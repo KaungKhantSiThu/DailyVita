@@ -89,7 +89,8 @@ class DietsViewModel: OnboardingViewModel {
     
     func loadOptions() {
         do {
-            let response = try JSONLoader.decode(GenericResponse<Diet>.self, from: "Diets")
+            let jsonLoader = JSONLoader()
+            let response = try jsonLoader.decode(GenericResponse<Diet>.self, from: "Diets")
             options = response.data
         } catch {
             self.error = error
@@ -115,7 +116,8 @@ class AllergiesViewModel: OnboardingViewModel {
     
     func loadOptions() {
         do {
-            let response = try JSONLoader.decode(GenericResponse<Allergy>.self, from: "allergies")
+            let jsonLoader = JSONLoader()
+            let response = try jsonLoader.decode(GenericResponse<Allergy>.self, from: "allergies")
             options = response.data
         } catch {
             self.error = error
