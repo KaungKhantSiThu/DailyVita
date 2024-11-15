@@ -50,7 +50,3 @@ class HealthConcernsViewModel: OnboardingViewModel {
     }
 }
 
-struct HealthConcern: Codable, Identifiable, Hashable {
-    let id: Int
-    let name: String
-}

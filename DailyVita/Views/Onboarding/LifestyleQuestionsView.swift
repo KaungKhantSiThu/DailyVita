@@ -14,7 +14,6 @@ struct LifestyleQuestionsView: View {
     var body: some View {
         OnboardingBaseView(
             viewModel: viewModel,
-            title: "Lifestyle Questions",
             position: .end,
             onNext: onNext,
             onBack: onBack,
@@ -37,6 +36,7 @@ struct QuestionView: View {
         VStack(alignment: .leading, spacing: 12) {
             Text(question.text)
                 .font(.headline)
+                .lineLimit(0)
             
             VStack(spacing: 8) {
                 ForEach(question.answers, id: \.self) { answer in
@@ -67,7 +67,7 @@ struct AnswerButton: View {
                     .foregroundColor(isSelected ? .primary : .gray)
                 Spacer()
             }
-            .padding()
+            .padding(5)
         }
         .font(.headline)
         .buttonStyle(.plain)

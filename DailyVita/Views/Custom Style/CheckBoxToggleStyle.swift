@@ -9,11 +9,7 @@
 import SwiftUI
 
 struct CheckBoxToggleStyle: ToggleStyle {
-    let tip: String?
     
-    init(tip: String? = nil) {
-        self.tip = tip
-    }
     func makeBody(configuration: Configuration) -> some View {
         HStack(spacing: 10) {
             
@@ -25,16 +21,6 @@ struct CheckBoxToggleStyle: ToggleStyle {
             }
             
             configuration.label
-            
-            if let tip, !tip.isEmpty {
-//                Button {
-//                    // do nothing
-//                    print(tip)
-//                } label: {
-                    Image(systemName: "info.circle")
-//                }
-                .foregroundStyle(.blue)
-            }
         }
     }
 }

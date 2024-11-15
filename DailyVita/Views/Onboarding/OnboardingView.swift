@@ -34,8 +34,10 @@ struct OnboardingView: View {
             )
             }
             
-            ProgressView(value: Double(currentStep.rawValue),
-                         total: Double(OnboardingStep.allCases.count - 1))
+            if currentStep != .welcome {
+                ProgressView(value: Double(currentStep.rawValue),
+                             total: Double(OnboardingStep.allCases.count - 1))
+            }
         }
         .padding()
     }

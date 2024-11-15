@@ -14,15 +14,17 @@ init(userChoices: UserChoices, onNext: @escaping () -> Void, onBack: @escaping (
     var body: some View {
         OnboardingBaseView(
             viewModel: viewModel,
-            title: "Select the top health concerns (up to 5)",
             position: .middle,
             onNext: onNext,
             onBack: onBack,
             isNextEnabled: !viewModel.selectedConcerns.isEmpty
         ) {
             VStack(spacing: 20) {
+                
+                Text("Select the top health concerns (up to 5)")
+                    .font(.headline)
                 // Health concerns selection
-                FlowLayout(spacing: 15) {
+                FlowLayout(spacing: 10) {
                     ForEach(viewModel.options) { concern in
                         ConcernButton(
                             title: concern.name,
@@ -31,6 +33,7 @@ init(userChoices: UserChoices, onNext: @escaping () -> Void, onBack: @escaping (
                         )
                     }
                 }
+                .padding(.bottom, 20)
                 
                 // Prioritized list
                 if !viewModel.selectedConcerns.isEmpty {
@@ -41,8 +44,9 @@ init(userChoices: UserChoices, onNext: @escaping () -> Void, onBack: @escaping (
                         List {
                             ForEach(viewModel.displayedConcerns) { concern in
                                 Text(concern.name)
-                                .padding(10)
-                                
+                                    .font(.caption)
+                                .padding(7)
+                    
                                 .frame(maxWidth: .infinity, alignment: .leading)
                                 .background(Color.gray.opacity(0.1))
                                 .cornerRadius(8)
@@ -73,12 +77,13 @@ struct ConcernButton: View {
     var body: some View {
         Button(action: action) {
             Text(title)
-                .padding(8)
-                .padding(.horizontal, 10)
+                .font(.caption)
+                .padding(6)
+                .padding(.horizontal, 8)
                 .frame(maxWidth: .infinity)
                 .background(isSelected ? Color.blue : Color.gray.opacity(0.2))
                 .foregroundColor(isSelected ? .white : .primary)
-                .cornerRadius(20)
+                .cornerRadius(15)
         }
     }
 } 

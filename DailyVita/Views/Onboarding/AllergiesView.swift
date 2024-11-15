@@ -20,12 +20,14 @@ struct AllergiesView: View {
     var body: some View {
         OnboardingBaseView(
             viewModel: viewModel,
-            title: "Specify any allergies or sensitivities.",
             position: .middle,
             onNext: onNext,
             onBack: onBack
         ) {
             VStack(alignment: .leading, spacing: 12) {
+                Text("Specify any allergies or sensitivities.")
+                    .font(.headline)
+                
                 TextField("Enter allergies here", text: $searchText)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .padding(.horizontal)

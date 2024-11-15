@@ -1,10 +1,11 @@
-import Foundation
+//
+//  LifestyleQuestionsViewModel.swift
+//  DailyVita
+//
+//  Created by Kaung Khant Si Thu on 13/11/2024.
+//
 
-class WelcomeViewModel: OnboardingViewModel {
-    @Published var options: [String] = []
-    @Published var error: Error?
-    func loadOptions() { /* No options to load */ }
-}
+import Foundation
 
 class LifestyleQuestionsViewModel: OnboardingViewModel {
     @Published var options: [Question] = []
@@ -65,62 +66,5 @@ class LifestyleQuestionsViewModel: OnboardingViewModel {
         userChoices.isDailyExposure = isDailyExposure
         userChoices.isSmoke = isSmoke
         userChoices.alcohol = alcohol
-    }
-}
-
-
-
-
-class DietsViewModel: OnboardingViewModel {
-    @Published var options: [Diet] = []
-    @Published var error: Error?
-
-    @Published var selectedDiets: Set<Diet> = [] {
-        didSet {
-            userChoices.selectedDiets = Array(selectedDiets.map(\.name))
-        }
-    }
-    
-    private var userChoices: UserChoices
-    
-    init(userChoices: UserChoices) {
-        self.userChoices = userChoices
-    }
-    
-    func loadOptions() {
-        do {
-            let jsonLoader = JSONLoader()
-            let response = try jsonLoader.decode(GenericResponse<Diet>.self, from: "Diets")
-            options = response.data
-        } catch {
-            self.error = error
-        }
-    }
-}
-
-class AllergiesViewModel: OnboardingViewModel {
-    @Published var options: [Allergy] = []
-    @Published var error: Error?
-
-    @Published var selectedAllergies: Set<Allergy> = [] {
-        didSet {
-            userChoices.selectedAllergies = Array(selectedAllergies.map(\.name))
-        }
-    }
-    
-    private var userChoices: UserChoices
-    
-    init(userChoices: UserChoices) {
-        self.userChoices = userChoices
-    }
-    
-    func loadOptions() {
-        do {
-            let jsonLoader = JSONLoader()
-            let response = try jsonLoader.decode(GenericResponse<Allergy>.self, from: "allergies")
-            options = response.data
-        } catch {
-            self.error = error
-        }
     }
 }
